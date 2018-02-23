@@ -2,6 +2,8 @@
 
     <h1 n:block="title">Můj blog</h1>
 
+    <p><a n:href="Post:create">Napsat nový příspěvek</a></p>
+
     <div n:foreach="$posts as $post" class="post">
         <div class="date">{$post->created_at|date:'F j, Y'}</div>
 

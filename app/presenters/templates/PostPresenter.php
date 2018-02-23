@@ -57,4 +57,32 @@ class PostPresenter extends Nette\Application\UI\Presenter
         $this->flashMessage('Děkuji za komentář', 'success');
         $this->redirect('this');
     }
+
+    public function renderCreate()
+    {
+
+    }
+
+    protected function createComponentPostForm()
+    {
+        $form = new Form;
+
+        $form->addText('title', 'Titulek:')->setRequired();
+
+        $form->addTextArea('content', 'Obsah:')->setRequired();
+
+        $form->addSubmit('send', 'Uložit a publikovat');
+
+        $form->onSuccess[] = [$this, 'postFormSucceeded'];
+
+        return $form;
+    }
+
+    public function postFormSucceeded($form, $values)
+    {
+        $post = $this->database->table('posts')->insert($values);
+
+        $this->flashMessage('Příspěvek byl úspěšně publikován', 'success');
+        $this->redirect('show', $post->ID);
+    }
 }
