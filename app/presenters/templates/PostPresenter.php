@@ -34,7 +34,7 @@ class PostPresenter extends Nette\Application\UI\Presenter
 
         $form->addEmail('email', 'Email:');
 
-        $form->addTextArea('comment', 'Komentář:')->setRequired();
+        $form->addTextArea('content', 'Komentář:')->setRequired();
 
         $form->addSubmit('send','Publikovat komentář');
 
