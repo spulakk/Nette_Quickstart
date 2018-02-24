@@ -80,9 +80,27 @@ class PostPresenter extends Nette\Application\UI\Presenter
 
     public function postFormSucceeded($form, $values)
     {
-        $post = $this->database->table('posts')->insert($values);
+        $postId = $this->getParameter('postId');
+
+        if ($postId) {
+            $post = $this->database->table('posts')->get($postId);
+            $post->update($values);
+        }
+        else {
+            $post = $this->database->table('posts')->insert($values);
+        }
 
         $this->flashMessage('Příspěvek byl úspěšně publikován', 'success');
         $this->redirect('show', $post->ID);
+    }
+
+    public function actionEdit($postId)
+    {
+        $post = $this->database->table('posts')->get($postId);
+        if (!$post) {
+            $this->error('Článek nebyl nalezen');
+        }
+
+        $this['postForm']->setDefaults($post->toArray());
     }
 }
