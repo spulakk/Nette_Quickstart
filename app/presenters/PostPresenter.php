@@ -58,9 +58,11 @@ class PostPresenter extends Nette\Application\UI\Presenter
         $this->redirect('this');
     }
 
-    public function renderCreate()
+    public function actionCreate()
     {
-
+        if (!$this->getUser()->isLoggedIn()) {
+            $this->redirect('Sign:in');
+        }
     }
 
     protected function createComponentPostForm()
@@ -80,6 +82,10 @@ class PostPresenter extends Nette\Application\UI\Presenter
 
     public function postFormSucceeded($form, $values)
     {
+        if (!$this->getUser()->isLoggedIn()) {
+            $this->error('Pro vytvoření nebo editování příspěvku se musíte přihlásit.');
+        }
+
         $postId = $this->getParameter('postId');
 
         if ($postId) {
@@ -96,10 +102,16 @@ class PostPresenter extends Nette\Application\UI\Presenter
 
     public function actionEdit($postId)
     {
+        if (!$this->getUser()->isLoggedIn()) {
+            $this->redirect('Sign:in');
+        }
+
         $post = $this->database->table('posts')->get($postId);
         if (!$post) {
             $this->error('Článek nebyl nalezen');
         }
+
+        $this->template->post = $post;
 
         $this['postForm']->setDefaults($post->toArray());
     }
