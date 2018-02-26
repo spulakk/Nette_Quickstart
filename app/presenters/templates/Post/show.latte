@@ -2,7 +2,7 @@
 
     <div class="date">{$post->created_at|date:'F j, Y'}</div>
 
-    <h1 n:block="title">{$post->title}</h1>
+    <h1 class="title" n:block="title">{$post->title}</h1>
 
     <a n:href="edit $post->ID" n:if="$user->loggedIn">Upravit příspěvek</a>
 
@@ -15,7 +15,7 @@
     <h2>Komentáře</h2>
 
     <div n:foreach="$comments as $comment" class="comments">
-        <p><b><a href="mailto:{$comment->email}" n:tag-if="$comment->email">{$comment->name}</a></b> napsal:</p>
-        <div>{$comment->content}</div>
+        <p class="commentator"><b><a href="mailto:{$comment->email}" n:tag-if="$comment->email">{$comment->name}</a></b> napsal:</p>
+        <div class="comment">{$comment->content}</div>
     </div>
 {/block}

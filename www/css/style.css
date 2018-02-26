@@ -3,7 +3,7 @@ body {
     margin: 0 auto;
     width: 600px;
     color: #333;
-    background-color: #fff;
+    background-color: #FCFBE3;
 }
 
 div.flash {
@@ -35,4 +35,45 @@ form .required label {
 form .error {
     color: #D00;
     font-weight: bold;
+}
+
+.title {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.post {
+    margin-bottom: 30px;
+}
+
+.commentator {
+    margin: 0;
+}
+
+.comment {
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
 }
