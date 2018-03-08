@@ -78,8 +78,28 @@ li a:hover {
     background-color: #111;
 }
 
-.chatbox {
+#chatbox {
     width: 400px;
     height: 600px;
     border: 1px solid black;
+    padding: 3px;
+    overflow: auto;
+}
+
+#message {
+    margin: 8px 0;
+    clear: both;
+    overflow: hidden;
+}
+
+#chat_name, #chat_content {
+    float: left;
+    width: 300px;
+    overflow: hidden;
+    word-wrap: break-word;
+
+}
+
+#chat_timestamp {
+    float: right;
 }
