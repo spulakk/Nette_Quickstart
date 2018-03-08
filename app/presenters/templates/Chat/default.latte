@@ -1,0 +1,15 @@
+{block content}
+
+    <h2 n:block="title">Chat</h2>
+
+    <div class="chatbox">
+        <div n:foreach="$chat as $message">
+            <div><b>{$message->name}:</b></div>
+            <div>{$message->content}</div>
+            <div>{$message->created_at|date:'G:i'}</div>
+        </div>
+    </div>
+
+    {control chatForm}
+
+{/block}

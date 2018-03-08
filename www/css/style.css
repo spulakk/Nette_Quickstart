@@ -77,3 +77,9 @@ li a {
 li a:hover {
     background-color: #111;
 }
+
+.chatbox {
+    width: 400px;
+    height: 600px;
+    border: 1px solid black;
+}
